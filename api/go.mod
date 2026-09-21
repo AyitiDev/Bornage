@@ -1,3 +1,3 @@
 module github.com/AyitiDev/Bornage/api
 
-go 1.27.1
+go 1.23.0
