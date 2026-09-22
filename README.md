@@ -62,4 +62,3 @@ stateDiagram-v2
     PUBLISHED_FOR_OBJECTION --> REGISTERED: 30-60 day window expires with zero disputes
     REGISTERED --> [*]
 ```
-
