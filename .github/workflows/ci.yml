@@ -1,0 +1,48 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
+
+jobs:
+  backend-checks:
+    name: Backend Lint & Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Go Environment
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+          cache-dependency-path: api/go.sum
+
+      - name: Verify Go Formatting
+        run: |
+          if [ -n "$(gofmt -l api/)" ]; then
+            echo "Go code is not formatted. Run 'gofmt -w .' in api/"
+            exit 1
+          fi
+
+      - name: Run Go Vet
+        working-directory: ./api
+        run: go vet ./...
+
+      - name: Build Go Workspace
+        working-directory: ./api
+        run: go build -v ./...
+
+  docker-check:
+    name: Docker Compose Build Verification
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Validate Dockerfile Build
+        run: docker build -t open-land-registry-api:test ./api
