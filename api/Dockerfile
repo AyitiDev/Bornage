@@ -2,17 +2,19 @@ FROM golang:1.23-alpine AS builder
 
 WORKDIR /app
 
-# Copy go.mod and go.sum (if present)
-COPY go.mod ./
-RUN go mod download || true
+# Copy dependency definition files
+COPY go.mod go.sum ./
 
-# Copy source code
+# Download and verify dependencies
+RUN go mod download
+
+# Copy application source code
 COPY . .
 
-# Build single API binary
-RUN CGO_ENABLED=0 GOOS=linux go build -o /server ./cmd/server
+# Build single static API binary
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o /server ./cmd/server
 
-FROM alpine:latest
+FROM alpine:3.20
 
 RUN apk --no-cache add ca-certificates curl
 

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"log"
 	"os"
 	"os/signal"
@@ -8,6 +9,7 @@ import (
 	"time"
 
 	"github.com/AyitiDev/Bornage/api/internal/config"
+	"github.com/AyitiDev/Bornage/api/internal/db"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -15,13 +17,25 @@ import (
 )
 
 func main() {
-	// 1. Load strongly typed configuration
+	// 1 Load strongly typed configuration
 	cfg, err := config.Load()
 	if err != nil {
 		log.Fatalf("Fatal: failed to load configuration: %v", err)
 	}
 
-	// 2. Initialize Fiber app with custom configuration
+	// 2 Initialize PostgreSQL / PostGIS Connection Pool (Singleton Pattern)
+	dbConn, err := db.GetInstance(cfg.Database)
+	if err != nil {
+		log.Printf("[WARN] Database connection warning: %v (running in disconnected mode)", err)
+	} else {
+		defer func() {
+			if err := db.Close(); err != nil {
+				log.Printf("Error closing database connection: %v", err)
+			}
+		}()
+	}
+
+	// 3 Initialize Fiber app with custom configuration
 	app := fiber.New(fiber.Config{
 		AppName:      "Open Land Registry API v1.0",
 		ReadTimeout:  cfg.Server.ReadTimeout,
@@ -38,7 +52,7 @@ func main() {
 		},
 	})
 
-	// 3. Register global middleware
+	// 4 Register global middleware (Chain of Responsibility)
 	app.Use(recover.New())
 	app.Use(logger.New(logger.Config{
 		Format: "[${time}] ${status} - ${latency} ${method} ${path}\n",
@@ -51,18 +65,30 @@ func main() {
 
 	startTime := time.Now()
 
-	// 4. Health Check endpoint (Task 17 requirement)
+	// 5 Health Check endpoint with DB status (Task 17 & Task 19)
 	app.Get("/health", func(c *fiber.Ctx) error {
+		dbStatus := "disconnected"
+		if dbConn != nil {
+			ctx, cancel := context.WithTimeout(c.Context(), 2*time.Second)
+			defer cancel()
+			if err := dbConn.PingContext(ctx); err == nil {
+				dbStatus = "connected"
+			} else {
+				dbStatus = "unhealthy"
+			}
+		}
+
 		return c.Status(fiber.StatusOK).JSON(fiber.Map{
 			"status":      "ok",
 			"system":      "open-land-registry",
 			"environment": cfg.Server.Env,
+			"database":    dbStatus,
 			"uptime":      time.Since(startTime).String(),
 			"timestamp":   time.Now().UTC().Format(time.RFC3339),
 		})
 	})
 
-	// 5. Graceful shutdown setup
+	// 6 Graceful shutdown setup
 	shutdownChan := make(chan os.Signal, 1)
 	signal.Notify(shutdownChan, os.Interrupt, syscall.SIGTERM, syscall.SIGINT)
 
@@ -76,7 +102,7 @@ func main() {
 		}
 	}()
 
-	// 6. Start listening
+	// 7 Start listening
 	addr := ":" + cfg.Server.Port
 	log.Printf("Open Land Registry API server running on port %s (env: %s)...", cfg.Server.Port, cfg.Server.Env)
 
