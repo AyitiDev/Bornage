@@ -13,9 +13,9 @@ func TestParseLang(t *testing.T) {
 	}{
 		{"fr", i18n.LangFrench},
 		{"ht", i18n.LangHaitianCreole},
-		{"en", i18n.DefaultLang}, 
-		{"", i18n.DefaultLang},   
-		{"es", i18n.DefaultLang}, 
+		{"en", i18n.DefaultLang},
+		{"", i18n.DefaultLang},
+		{"es", i18n.DefaultLang},
 	}
 
 	for _, tt := range tests {
