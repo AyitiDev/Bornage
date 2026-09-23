@@ -133,43 +133,43 @@ var frenchTranslations = map[Key]string{
 }
 
 var haitianCreoleTranslations = map[Key]string{
-	// Generic
-	KeyInternalError:    "Une erreur interne est survenue. Veuillez réessayer plus tard",
-	KeyNotFound:         "La ressource demandée est introuvable",
-	KeyBadRequest:       "La requête est malformée ou contient des données invalides",
-	KeyUnauthorized:     "Authentification requise pour accéder à cette ressource",
-	KeyForbidden:        "Vous n'avez pas l'autorisation d'effectuer cette action",
-	KeyValidationFailed: "La validation des données a échoué",
+	// Jeneral
+	KeyInternalError:    "Gen yon pwoblèm entèn. Tanpri eseye ankò pita",
+	KeyNotFound:         "Nou pa jwenn resous ou mande a",
+	KeyBadRequest:       "Demann nan pa valab oswa li gen done ki pa valab",
+	KeyUnauthorized:     "Ou dwe konekte pou w ka jwenn aksè ak resous sa a",
+	KeyForbidden:        "Ou pa gen pèmisyon pou w fè aksyon sa a",
+	KeyValidationFailed: "Done yo pa pase verifikasyon an",
 
-	// Party
-	KeyPartyNotFound:     "Le titulaire foncier est introuvable",
-	KeyPartyCreated:      "Le titulaire foncier a été créé avec succès",
-	KeyPartyNameRequired: "Le prénom est obligatoire",
-	KeyPartyTypeInvalid:  "Le type de titulaire est invalide",
+	// Pati
+	KeyPartyNotFound:     "Nou pa jwenn mèt tè a",
+	KeyPartyCreated:      "Mèt tè a te anrejistre avèk siksè",
+	KeyPartyNameRequired: "Prenon an obligatwa",
+	KeyPartyTypeInvalid:  "Kalite mèt tè a pa valab",
 
-	// Spatial Unit
-	KeySpatialUnitNotFound: "La parcelle foncière est introuvable",
-	KeySpatialUnitCreated:  "La parcelle foncière a été créée avec succès",
-	KeyGeomRequired:        "La géométrie de la parcelle est obligatoire",
-	KeyGeomInvalid:         "La géométrie fournie est invalide ou non reconnue",
-	KeyOverlapDetected:     "La parcelle soumise chevauche une parcelle existante enregistrée",
+	// Pasèl tè
+	KeySpatialUnitNotFound: "Nou pa jwenn pasèl tè a",
+	KeySpatialUnitCreated:  "Pasèl tè a te anrejistre avèk siksè",
+	KeyGeomRequired:        "Jeyometri pasèl la obligatwa",
+	KeyGeomInvalid:         "Jeyometri yo bay la pa valab oswa nou pa rekonèt li",
+	KeyOverlapDetected:     "Pasèl ou soumèt la sipèpoze ak yon pasèl ki deja anrejistre",
 
-	// Claim
-	KeyClaimNotFound:         "La demande d'enregistrement est introuvable",
-	KeyClaimCreated:          "La demande d'enregistrement a été créée avec succès",
-	KeyClaimStatusInvalid:    "Le statut de la demande est invalide",
-	KeyClaimTransitionDenied: "La transition de statut demandée n'est pas autorisée",
-	KeyObjectionPeriodActive: "La période d'opposition publique est toujours en cours",
+	// Demann
+	KeyClaimNotFound:         "Nou pa jwenn demann anrejistreman an",
+	KeyClaimCreated:          "Demann anrejistreman an te kreye avèk siksè",
+	KeyClaimStatusInvalid:    "Estati demann nan pa valab",
+	KeyClaimTransitionDenied: "Ou pa gen pèmisyon pou chanje estati demann sa a",
+	KeyObjectionPeriodActive: "Peryòd pou fè opozisyon piblik la poko fini",
 
-	// Source
-	KeySourceNotFound:     "La preuve documentaire est introuvable",
-	KeySourceUploaded:     "La preuve documentaire a été téléchargée avec succès",
-	KeySourceHashMismatch: "L'intégrité du document est compromise : l'empreinte SHA-256 ne correspond pas",
+	// Sous
+	KeySourceNotFound:     "Nou pa jwenn prèv dokimantè a",
+	KeySourceUploaded:     "Prèv dokimantè a te telechaje avèk siksè",
+	KeySourceHashMismatch: "Dokiman an pa sanble ak dokiman orijinal la: anprent SHA-256 la pa koresponn",
 
-	// Witness
-	KeyWitnessNotFound:     "Le témoin de bornage est introuvable",
-	KeyWitnessCreated:      "Le témoin de bornage a été enregistré avec succès",
-	KeyWitnessNameRequired: "Li obligatwa pou w bay non temwen an.",
+	// Temwen
+	KeyWitnessNotFound:     "Nou pa jwenn temwen limit tè a",
+	KeyWitnessCreated:      "Temwen limit tè a te anrejistre avèk siksè",
+	KeyWitnessNameRequired: "Non temwen an obligatwa",
 }
 
 // Translate returns the translated string for the given language and key
