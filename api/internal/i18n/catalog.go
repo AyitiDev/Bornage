@@ -134,42 +134,42 @@ var frenchTranslations = map[Key]string{
 
 var haitianCreoleTranslations = map[Key]string{
 	// Generic
-	KeyInternalError:    "",
-	KeyNotFound:         "",
-	KeyBadRequest:       "",
-	KeyUnauthorized:     "",
-	KeyForbidden:        "",
-	KeyValidationFailed: "",
+	KeyInternalError:    "Une erreur interne est survenue. Veuillez réessayer plus tard",
+	KeyNotFound:         "La ressource demandée est introuvable",
+	KeyBadRequest:       "La requête est malformée ou contient des données invalides",
+	KeyUnauthorized:     "Authentification requise pour accéder à cette ressource",
+	KeyForbidden:        "Vous n'avez pas l'autorisation d'effectuer cette action",
+	KeyValidationFailed: "La validation des données a échoué",
 
 	// Party
-	KeyPartyNotFound:     "",
-	KeyPartyCreated:      "",
-	KeyPartyNameRequired: "",
-	KeyPartyTypeInvalid:  "",
+	KeyPartyNotFound:     "Le titulaire foncier est introuvable",
+	KeyPartyCreated:      "Le titulaire foncier a été créé avec succès",
+	KeyPartyNameRequired: "Le prénom est obligatoire",
+	KeyPartyTypeInvalid:  "Le type de titulaire est invalide",
 
 	// Spatial Unit
-	KeySpatialUnitNotFound: "",
-	KeySpatialUnitCreated:  "",
-	KeyGeomRequired:        ",
-	KeyGeomInvalid:         "",
-	KeyOverlapDetected:     "",
+	KeySpatialUnitNotFound: "La parcelle foncière est introuvable",
+	KeySpatialUnitCreated:  "La parcelle foncière a été créée avec succès",
+	KeyGeomRequired:        "La géométrie de la parcelle est obligatoire",
+	KeyGeomInvalid:         "La géométrie fournie est invalide ou non reconnue",
+	KeyOverlapDetected:     "La parcelle soumise chevauche une parcelle existante enregistrée",
 
 	// Claim
-	KeyClaimNotFound:         "",
-	KeyClaimCreated:          "",
-	KeyClaimStatusInvalid:    "",
-	KeyClaimTransitionDenied: "",
-	KeyObjectionPeriodActive: "",
+	KeyClaimNotFound:         "La demande d'enregistrement est introuvable",
+	KeyClaimCreated:          "La demande d'enregistrement a été créée avec succès",
+	KeyClaimStatusInvalid:    "Le statut de la demande est invalide",
+	KeyClaimTransitionDenied: "La transition de statut demandée n'est pas autorisée",
+	KeyObjectionPeriodActive: "La période d'opposition publique est toujours en cours",
 
 	// Source
-	KeySourceNotFound:     "",
-	KeySourceUploaded:     ",
-	KeySourceHashMismatch: "",
+	KeySourceNotFound:     "La preuve documentaire est introuvable",
+	KeySourceUploaded:     "La preuve documentaire a été téléchargée avec succès",
+	KeySourceHashMismatch: "L'intégrité du document est compromise : l'empreinte SHA-256 ne correspond pas",
 
 	// Witness
-	KeyWitnessNotFound:     "",
-	KeyWitnessCreated:      "",
-	KeyWitnessNameRequired: "",
+	KeyWitnessNotFound:     "Le témoin de bornage est introuvable",
+	KeyWitnessCreated:      "Le témoin de bornage a été enregistré avec succès",
+	KeyWitnessNameRequired: "Li obligatwa pou w bay non temwen an.",
 }
 
 // Translate returns the translated string for the given language and key
