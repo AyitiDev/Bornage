@@ -133,7 +133,7 @@ var frenchTranslations = map[Key]string{
 }
 
 var haitianCreoleTranslations = map[Key]string{
-	// Jeneral
+	// Generic
 	KeyInternalError:    "Gen yon pwoblèm entèn. Tanpri eseye ankò pita",
 	KeyNotFound:         "Nou pa jwenn resous ou mande a",
 	KeyBadRequest:       "Demann nan pa valab oswa li gen done ki pa valab",
@@ -141,32 +141,32 @@ var haitianCreoleTranslations = map[Key]string{
 	KeyForbidden:        "Ou pa gen pèmisyon pou w fè aksyon sa a",
 	KeyValidationFailed: "Done yo pa pase verifikasyon an",
 
-	// Pati
+	// Party
 	KeyPartyNotFound:     "Nou pa jwenn mèt tè a",
-	KeyPartyCreated:      "Mèt tè a te anrejistre avèk siksè",
+	KeyPartyCreated:      "Mèt tè a te kreye avèk siksè",
 	KeyPartyNameRequired: "Prenon an obligatwa",
 	KeyPartyTypeInvalid:  "Kalite mèt tè a pa valab",
 
-	// Pasèl tè
+	// Spatial Unit
 	KeySpatialUnitNotFound: "Nou pa jwenn pasèl tè a",
-	KeySpatialUnitCreated:  "Pasèl tè a te anrejistre avèk siksè",
+	KeySpatialUnitCreated:  "Pasèl tè a te kreye avèk siksè",
 	KeyGeomRequired:        "Jeyometri pasèl la obligatwa",
 	KeyGeomInvalid:         "Jeyometri yo bay la pa valab oswa nou pa rekonèt li",
 	KeyOverlapDetected:     "Pasèl ou soumèt la sipèpoze ak yon pasèl ki deja anrejistre",
 
-	// Demann
+	// Claim
 	KeyClaimNotFound:         "Nou pa jwenn demann anrejistreman an",
 	KeyClaimCreated:          "Demann anrejistreman an te kreye avèk siksè",
 	KeyClaimStatusInvalid:    "Estati demann nan pa valab",
 	KeyClaimTransitionDenied: "Ou pa gen pèmisyon pou chanje estati demann sa a",
 	KeyObjectionPeriodActive: "Peryòd pou fè opozisyon piblik la poko fini",
 
-	// Sous
+	// Source
 	KeySourceNotFound:     "Nou pa jwenn prèv dokimantè a",
 	KeySourceUploaded:     "Prèv dokimantè a te telechaje avèk siksè",
 	KeySourceHashMismatch: "Dokiman an pa sanble ak dokiman orijinal la: anprent SHA-256 la pa koresponn",
 
-	// Temwen
+	// Witness
 	KeyWitnessNotFound:     "Nou pa jwenn temwen limit tè a",
 	KeyWitnessCreated:      "Temwen limit tè a te anrejistre avèk siksè",
 	KeyWitnessNameRequired: "Non temwen an obligatwa",
