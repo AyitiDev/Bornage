@@ -12,6 +12,9 @@ type StorageService interface {
 	// Upload stores an object and returns its s3_key, calculated sha256_hash, and error
 	Upload(ctx context.Context, objectName string, reader io.Reader, size int64, contentType string) (s3Key string, sha256Hash string, err error)
 
+	// Download retrieves an object stream from the bucket
+	Download(ctx context.Context, objectName string) (io.ReadCloser, error)
+
 	// GetPresignedURL generates a time-limited download URL for a stored evidence file
 	GetPresignedURL(ctx context.Context, objectName string, expires time.Duration) (string, error)
 
