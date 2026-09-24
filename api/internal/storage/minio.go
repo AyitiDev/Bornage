@@ -120,6 +120,15 @@ func (s *MinIOStorage) Upload(ctx context.Context, objectName string, reader io.
 	return uploadInfo.Key, sha256Hash, nil
 }
 
+// Download fetches an evidence object stream directly from the MinIO/S3 bucket
+func (s *MinIOStorage) Download(ctx context.Context, objectName string) (io.ReadCloser, error) {
+	object, err := s.client.GetObject(ctx, s.bucket, objectName, minio.GetObjectOptions{})
+	if err != nil {
+		return nil, fmt.Errorf("failed to download object '%s' from bucket '%s': %w", objectName, s.bucket, err)
+	}
+	return object, nil
+}
+
 // GetPresignedURL generates a secure, time limited presigned GET URL for downloading evidence
 func (s *MinIOStorage) GetPresignedURL(ctx context.Context, objectName string, expires time.Duration) (string, error) {
 	reqParams := make(url.Values)
